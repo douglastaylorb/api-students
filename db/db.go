@@ -10,11 +10,11 @@ import (
 
 type Student struct {
 	gorm.Model
-	Name   string
-	CPF    int
-	Email  string
-	Age    int
-	Active bool
+	Name   string `json:"name"`
+	CPF    int    `json:"cpf"`
+	Email  string `json:"email"`
+	Age    int    `json:"age"`
+	Active bool   `json:"registration"`
 }
 
 func Init() *gorm.DB {
@@ -29,16 +29,8 @@ func Init() *gorm.DB {
 	return db
 }
 
-func AddStudent() {
+func AddStudent(student Student) {
 	db := Init()
-
-	student := Student{
-		Name:   "John Doe",
-		CPF:    123456789,
-		Email:  "teste@gmail.com",
-		Age:    20,
-		Active: true,
-	}
 
 	if result := db.Create(&student); result.Error != nil {
 		log.Fatalln(result.Error)
