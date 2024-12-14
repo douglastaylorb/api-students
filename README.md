@@ -7,6 +7,7 @@ Routes
 - GET /students/:id - Get infos from a specific student
 - PUT /students/:id - Update student
 - DELETE /students/:id - Delete Student
+- GET /students?active=<true/false> - List all active/non-active students
 
 Struct Student:
 - Name
