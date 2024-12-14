@@ -8,5 +8,5 @@ type Student struct {
 	CPF    int    `json:"cpf"`
 	Email  string `json:"email"`
 	Age    int    `json:"age"`
-	Active bool   `json:"registration"`
+	Active bool   `json:"active"`
 }
