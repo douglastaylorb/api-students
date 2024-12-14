@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/douglastaylorb/api-students/db"
+	"github.com/douglastaylorb/api-students/schemas"
 	"github.com/labstack/echo"
 	"gorm.io/gorm"
 )
@@ -21,7 +21,7 @@ func (api *API) getStudents(c echo.Context) error {
 }
 
 func (api *API) createStudent(c echo.Context) error {
-	student := db.Student{}
+	student := schemas.Student{}
 	err := c.Bind(&student)
 	if err != nil {
 		return err
@@ -60,7 +60,7 @@ func (api *API) updateStudent(c echo.Context) error {
 		return c.String(http.StatusInternalServerError, "Invalid ID")
 	}
 
-	receivedStudent := db.Student{}
+	receivedStudent := schemas.Student{}
 	if err := c.Bind(&receivedStudent); err != nil {
 		return err
 	}
@@ -106,7 +106,7 @@ func (api *API) deleteStudent(c echo.Context) error {
 
 }
 
-func updateStudentInfo(receivedStudent, student db.Student) db.Student {
+func updateStudentInfo(receivedStudent, student schemas.Student) schemas.Student {
 	if receivedStudent.Name != "" {
 		student.Name = receivedStudent.Name
 	}
