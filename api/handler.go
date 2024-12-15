@@ -6,10 +6,22 @@ import (
 	"strconv"
 
 	"github.com/douglastaylorb/api-students/schemas"
-	"github.com/labstack/echo"
+	"github.com/labstack/echo/v4"
 	"github.com/rs/zerolog/log"
 	"gorm.io/gorm"
 )
+
+// getStudents godoc
+//
+// @Summary 		Get all students
+// @Description Get all students
+// @Tags 				students
+// @Accept 			json
+// @Produce 		json
+// @Param 			active query boolean false "Filter by active"
+// @Success 		200 {object} schemas.StudentResponse
+// @Failure 		404 {string} string "Error to get students"
+// @Router 			/students/{id} [get]
 
 func (api *API) getStudents(c echo.Context) error {
 	students, err := api.DB.GetStudents()
